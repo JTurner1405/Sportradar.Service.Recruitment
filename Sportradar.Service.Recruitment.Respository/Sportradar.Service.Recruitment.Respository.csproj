@@ -14,9 +14,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Class\" />
-    <Folder Include="Interface\" />
-  </ItemGroup>
-
 </Project>
