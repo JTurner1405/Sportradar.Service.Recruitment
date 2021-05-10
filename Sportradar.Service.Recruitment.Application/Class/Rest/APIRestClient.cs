@@ -16,6 +16,7 @@ namespace Sportradar.Service.Recruitment.Application.Class.Rest
     public class APIRestClient : IAPIRestClient
     {
         private RestClient client;
+        private string authToken = "7C0F9D36-15A6-4F7B-98CF-301AB2A7DBEF";
 
         public APIRestClient()
         {
@@ -29,6 +30,12 @@ namespace Sportradar.Service.Recruitment.Application.Class.Rest
             client.UseSystemTextJson();
         }
 
+        /// <summary>
+        /// Get all matches played by a team in the given year
+        /// </summary>
+        /// <param name="startYear">Year to search</param>
+        /// <param name="teamId">Team to search for</param>
+        /// <returns>List of matches played</returns>
         public List<Match> GetAllMatchesForSeason(int startYear, int teamId)
         {
             if(teamId == 0 || startYear < 2000 || startYear > DateTime.Now.Year)
@@ -49,6 +56,13 @@ namespace Sportradar.Service.Recruitment.Application.Class.Rest
             return null;
         }
 
+        /// <summary>
+        /// Get List of all matches played between given years/season for a team
+        /// </summary>
+        /// <param name="startYear">start of season year</param>
+        /// <param name="endYear">end of season year</param>
+        /// <param name="teamId">Team id</param>
+        /// <returns>List of matches played</returns>
         public List<Match> GetAllMatchesForSeason(int startYear, int endYear, int teamId)
         {
             if (teamId == 0 || endYear < 2000 || endYear > DateTime.Now.Year || endYear < 2000 || endYear > DateTime.Now.Year || startYear > endYear)
@@ -77,9 +91,7 @@ namespace Sportradar.Service.Recruitment.Application.Class.Rest
                 return null;
             }
 
-            //var v1 = ConfigurationManager.AppSettings["AuthToken"];
-            //var v2 = ConfigurationManager.AppSettings["countoffiles"];
-            string authToken = "7C0F9D36-15A6-4F7B-98CF-301AB2A7DBEF";
+            
             var request = new RestRequest("v1/Match/List/{teamId}/{season}");
             request.AddUrlSegment("teamId", teamId);
             request.AddUrlSegment("season", season);
