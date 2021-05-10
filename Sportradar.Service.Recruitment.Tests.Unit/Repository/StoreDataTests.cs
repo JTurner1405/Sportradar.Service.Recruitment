@@ -156,8 +156,7 @@ namespace Sportradar.Service.Recruitment.Tests.Unit.Repository
             var result = storeData.CreateNewStoreForSeason(2019, 2020);
 
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.Name.Contains(fileName1));
-            result.Close();
+            Assert.AreEqual(fileName1, result);
         }
 
         [Test]
@@ -166,8 +165,7 @@ namespace Sportradar.Service.Recruitment.Tests.Unit.Repository
             var result = storeData.CreateNewStoreForSeason(2019);
 
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.Name.Contains(fileName2));
-            result.Close();
+            Assert.AreEqual(fileName2, result);
         }
 
         [Test]
@@ -176,8 +174,7 @@ namespace Sportradar.Service.Recruitment.Tests.Unit.Repository
             var result = storeData.CreateNewStoreForSeason("test");
 
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.Name.Contains(fileName3));
-            result.Close();
+            Assert.AreEqual(fileName3, result);
         }
     }
 }

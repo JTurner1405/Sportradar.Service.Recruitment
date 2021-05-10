@@ -15,7 +15,7 @@ namespace Sportradar.Service.Recruitment.Respository.Class
         /// <returns>If files already exists</returns>
         public bool CheckStoreAlreadyExists(int startYear, int endYear)
         {
-            return CheckStoreAlreadyExists(startYear + "-" + endYear);
+            return CheckStoreAlreadyExists(FileNameHelper.GetSeasonIdentifier(startYear , endYear));
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Sportradar.Service.Recruitment.Respository.Class
         /// <returns>if Remove was successful</returns>
         public bool RemoveExistingStore(int startYear, int endYear)
         {
-            return this.RemoveExistingStore(startYear + "-" + endYear);
+            return this.RemoveExistingStore(FileNameHelper.GetSeasonIdentifier(startYear, endYear));
         }
 
         /// <summary>
@@ -94,9 +94,9 @@ namespace Sportradar.Service.Recruitment.Respository.Class
         /// <param name="startYear">Start of season</param>
         /// <param name="endYear">end of season</param>
         /// <returns>If Create store was successful</returns>
-        public FileStream CreateNewStoreForSeason(int startYear, int endYear)
+        public string CreateNewStoreForSeason(int startYear, int endYear)
         {
-            return this.CreateNewStoreForSeason(startYear + "-" + endYear);
+            return this.CreateNewStoreForSeason(FileNameHelper.GetSeasonIdentifier(startYear, endYear));
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Sportradar.Service.Recruitment.Respository.Class
         /// </summary>
         /// <param name="startYear">Season year</param>
         /// <returns>if store created successfully</returns>
-        public FileStream CreateNewStoreForSeason(int startYear)
+        public string CreateNewStoreForSeason(int startYear)
         {
             return this.CreateNewStoreForSeason(startYear.ToString());
         }
@@ -114,11 +114,12 @@ namespace Sportradar.Service.Recruitment.Respository.Class
         /// </summary>
         /// <param name="season">season to create store for</param>
         /// <returns>if store is created successfully</returns>
-        public FileStream CreateNewStoreForSeason(string season)
+        public string CreateNewStoreForSeason(string season)
         {
             try
             {
-                return File.Create(FileNameHelper.GetFileName(season));
+                File.CreateText(FileNameHelper.GetFileName(season)).Close();
+                return FileNameHelper.GetFileName(season);
             }
             catch(Exception ex)
             {

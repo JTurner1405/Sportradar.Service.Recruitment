@@ -21,5 +21,16 @@ namespace Sportradar.Service.Recruitment.Respository.Class
         {
             return prefix + season + fileType;
         }
+
+        /// <summary>
+        /// combine start & end year of season for store identification
+        /// </summary>
+        /// <param name="startYear">season start year</param>
+        /// <param name="endYear">season end year</param>
+        /// <returns>season identifier</returns>
+        public static string GetSeasonIdentifier(int startYear, int endYear)
+        {
+            return startYear + "-" + endYear;
+        }
     }
 }

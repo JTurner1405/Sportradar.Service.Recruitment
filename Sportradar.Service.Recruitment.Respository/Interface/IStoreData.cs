@@ -62,20 +62,21 @@ namespace Sportradar.Service.Recruitment.Respository.Interface
         /// <param name="startYear">Start of season</param>
         /// <param name="endYear">end of season</param>
         /// <returns>If Create store was successful</returns>
-        FileStream CreateNewStoreForSeason(int startYear, int endYear);
+        string CreateNewStoreForSeason(int startYear, int endYear);
 
         /// <summary>
         /// Create new File store for season in a year
         /// </summary>
         /// <param name="startYear">Season year</param>
         /// <returns>if store created successfully</returns>
-        FileStream CreateNewStoreForSeason(int startYear);
+        string CreateNewStoreForSeason(int startYear);
 
         /// <summary>
         /// Create new File store for season
         /// </summary>
         /// <param name="season">season to create store for</param>
         /// <returns>if store is created successfully</returns>
-        FileStream CreateNewStoreForSeason(string season);
+        string CreateNewStoreForSeason(string season);
+
     }
 }

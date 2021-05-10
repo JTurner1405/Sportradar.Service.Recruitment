@@ -28,5 +28,13 @@ namespace Sportradar.Service.Recruitment.Tests.Unit.Repository
 
             Assert.AreEqual("SportsRadarStore-.json", result);
         }
+
+        [Test]
+        public void GetSeasonIdentifierTest()
+        {
+            var result = FileNameHelper.GetSeasonIdentifier(10, 12);
+
+            Assert.AreEqual("10-12", result);
+        }
     }
 }
