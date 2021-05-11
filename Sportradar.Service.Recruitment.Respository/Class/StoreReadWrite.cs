@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 
 namespace Sportradar.Service.Recruitment.Respository.Class
@@ -39,7 +40,7 @@ namespace Sportradar.Service.Recruitment.Respository.Class
         /// <returns>List of match objects</returns>
         public List<Match> ReadFromStore(String season)
         {
-            if(fileStore.CheckStoreAlreadyExists(season))
+            if (fileStore.CheckStoreAlreadyExists(season))
             {
                 var jsonString = File.ReadAllText(FileNameHelper.GetFileName(season));
                 return JsonSerializer.Deserialize<List<Match>>(jsonString);
@@ -47,7 +48,7 @@ namespace Sportradar.Service.Recruitment.Respository.Class
             else
             {
                 return null;
-            }            
+            }
         }
 
         /// <summary>
@@ -79,8 +80,15 @@ namespace Sportradar.Service.Recruitment.Respository.Class
         /// <returns>if add was successful</returns>
         public bool WriteToStore(List<Match> matches, string season)
         {
+            if (matches == null || !matches.Any())
+            {
+                return false;
+            }
+
             try
             {
+
+
                 var jsonString = JsonSerializer.Serialize(matches);
                 File.WriteAllText(FileNameHelper.GetFileName(season), jsonString);
             }

@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Sportradar.Service.Recruitment.Application\Sportradar.Service.Recruitment.Application.csproj" />
+    <ProjectReference Include="..\Sportradar.Service.Recruitment.Objects\Sportradar.Service.Recruitment.Objects.csproj" />
   </ItemGroup>
 
 </Project>

@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sportradar.Service.Recruitment.Objects\Sportradar.Service.Recruitment.Objects.csproj" />
+    <ProjectReference Include="..\Sportradar.Service.Recruitment.Respository\Sportradar.Service.Recruitment.Respository.csproj" />
   </ItemGroup>
 
 </Project>

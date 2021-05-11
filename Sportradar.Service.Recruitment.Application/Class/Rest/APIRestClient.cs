@@ -16,6 +16,7 @@ namespace Sportradar.Service.Recruitment.Application.Class.Rest
     public class APIRestClient : IAPIRestClient
     {
         private RestClient client;
+        //TODO Replace with from config
         private string authToken = "7C0F9D36-15A6-4F7B-98CF-301AB2A7DBEF";
 
         public APIRestClient()
